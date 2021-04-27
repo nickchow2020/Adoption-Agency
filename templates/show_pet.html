@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block title%}{{pet.name}}{% endblock %}
+{% block content %}
+<div class="card" style="width: 30rem;">
+    {% if pet.photo_url %}
+    <img src="{{pet.photo_url}}" class="card-img-top" alt="...">
+    {% else %}
+    <img src="https://webhostingmedia.net/wp-content/uploads/2018/01/http-error-404-not-found.png" class="card-img-top" alt="...">
+    {% endif %}
+    <div class="card-body">
+        <h2 class="card-title">{{pet.name}}</h2>
+        <h5>Species: <em>{{pet.species}}</em></h5>
+        <h5>Age: <em>{{pet.age}}</em></h5>
+        <a href="/" class="btn btn-success">Back Home</a>
+        <a href="/pet/{{pet.id}}/edit" class="btn btn-primary">Edit Pet</a>
+    </div>
+</div>
+{% endblock %}

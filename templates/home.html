@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+{% block title%}Home Page{% endblock %}
+{% block content%}
+    <div class="container">
+        <h1 class="text-secondary">Pets</h1>
+        <div class="row">
+            {% for pet in pets %}
+            <div class="col-4 mb-4">
+                {% if pet.photo_url %}
+                <img src="{{pet.photo_url}}" class="img-thumbnail" alt="pet">
+                {% else %}
+                <img src="https://webhostingmedia.net/wp-content/uploads/2018/01/http-error-404-not-found.png" class="img-thumbnail" alt="pet">
+                {% endif %}
+                {% if pet.available == True %}
+                    <span class="h4"><em class="text-success"><a href="/pet/{{pet.id}}">{{pet.name}}</a></em> is Available</span>
+                {% else %}
+                    <span class="h4"><em class="text-warning"><a href="/pet/{{pet.id}}">{{pet.name}}</a></em>Not Available</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/add" class="btn btn-primary">Add a Pet</a>
+    </div>
+{% endblock %}

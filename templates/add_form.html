@@ -1,0 +1,24 @@
+{% extends "template.html"%}
+{% block title %}add new pet{% endblock %}
+{% block content %}
+    <div class="container d-flex justify-content-center">
+        <div class="row col-4">
+                <h1 class="text-center mt-5">Add New Pet</h1>
+                <form method="POST">
+                    {{form.hidden_tag()}}
+                    {% for field in form if field.widget.input_type != "hidden" %}
+                        <div>
+                            {{field.label}}
+                            {{field(class_="form-control")}}
+
+                            {% for err in field.errors %}
+                                <small class="text-danger">{{err}}</small>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    <button class="btn btn-success mt-3 form-control">Add Pet</button>
+                    <a href="/" class="btn btn-secondary form-control mt-3">Cancel</a>
+                </form>
+        </div>
+    </div>
+{% endblock %}
